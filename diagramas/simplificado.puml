@@ -1,0 +1,31 @@
+@startuml simplificado
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+' uncomment the following line and comment the first to use locally
+' !include C4_Container.puml
+LAYOUT_AS_SKETCH()
+' LAYOUT_WITH_LEGEND()
+LAYOUT_TOP_DOWN()
+' LAYOUT_BOTTOM_UP()
+
+title Cobrança automática de Pedágio
+
+Person(car, 'Motorista', "Carro com Tag")
+
+Boundary(b0, "Pedagio") {
+  System(central, "Central Pedágio", "Controle de fluxo")
+}
+
+' UpdateRelStyle(car, rfid, $textColor="green", $lineColor="green", $offsetY="-40", $offsetX="-60")
+' UpdateElementStyle(catraca, $fontColor="green", $bgColor="lightgrey", $borderColor="green")
+' UpdateElementStyle(rfid, $fontColor="green", $bgColor="lightgrey", $borderColor="green")
+
+' UpdateRelStyle(rfid, central, $textColor="blue", $lineColor="blue", $offsetY="-10", $offsetX="0")
+' UpdateRelStyle(central, catraca, $textColor="blue", $lineColor="blue", $offsetY="-10", $offsetX="0")
+
+Enterprise_Boundary(nuvem, "Nuvem") {
+  System(platform,"Plataforma de Pedágio","gateway")
+}
+
+@enduml
+

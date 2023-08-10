@@ -1,0 +1,13 @@
+@startuml
+participant Tag
+participant Pedagio
+participant Plataforma
+participant Pagamento
+autonumber 
+Tag->Pedagio: detecção
+Pedagio->Plataforma: propaga
+Plataforma->Pagamento: cobrança
+Pagamento->Plataforma: retorno
+Plataforma->Pedagio: retorno
+Pedagio->Catraca: libera
+@enduml

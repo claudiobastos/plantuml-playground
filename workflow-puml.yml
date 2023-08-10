@@ -1,0 +1,31 @@
+name: Generate PlantUML drawings
+on:
+  push:
+    branches:
+      - main
+jobs:
+  generate-diagrams:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup PlantUML
+        uses: docker/setup-docker@v2
+
+      - name: Generate diagrams
+        run: |
+          docker run --rm -v $(pwd):/app plantuml/plantuml:latest plantuml -tsvg -o diagrams *.plantuml
+
+      - name: Upload diagrams
+        uses: actions/upload-artifact@v2
+        with:
+          path: diagrams
+
+      # - name: Commit and push changes
+      #   run: |
+      #     git config user.name "Your GitHub Username"
+      #     git config user.email "your-email@example.com"
+      #     git add diagrams
+      #     git commit -m "Update generated PlantUML Diagrams"
+      #     git push

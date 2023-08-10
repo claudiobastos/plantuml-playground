@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  plantuml:
+    # @startuml C4_Elements
+    # !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+    image: plantuml/plantuml-server
+    container_name: plantuml
+    restart: always
+    ports:
+      - "0.0.0.0:5052:8080"
+    volumes:
+      - .:/app
+    networks:
+      - web
+
+networks:
+  web:
+    # external: true

@@ -1,0 +1,20 @@
+@startuml
+participant Tag 
+participant Detector
+participant Pedagio
+participant Plataforma
+participant Veiculos
+participant Dono
+participant Pagamento
+autonumber 
+Tag->Detector: aproxima
+Detector->Pedagio: informa
+Pedagio->Plataforma: propaga
+Plataforma->Veiculos: identifica
+Veiculos->Dono: relaciona
+Dono->Pagamento: cobrança
+Pagamento->Plataforma: retorno
+Plataforma->Pedagio: retorno
+Pedagio->Catraca: libera
+
+@enduml
